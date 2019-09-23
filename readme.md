@@ -232,4 +232,10 @@ by pressing `CTRL-c`.
 
 Enjoy.
 
+**I strongly recommend that you use the industry color scheme instead of the
+normal colorscheme**. Some errors are red, and the default color scheme will
+make them unreadable.
+
+Just add `colorscheme industry` to your `.vimrc` file.
+
 ![](img/example.gif)
