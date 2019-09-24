@@ -27,16 +27,16 @@ Clone my provided basic vim config file from the following command
 wget raw.githubusercontent.com/jimmoua/boole/master/.vimrc --output-document ~/.vimrc
 ```
 
-**THIS WILL OVERWRITE YOUR CURRENT VIM**. If you do not wish to overwrite you
-current VIM configurations, follow the guide on how to install Vundle
+**THIS WILL OVERWRITE YOUR CURRENT VIM CONFIGS**. If you do not wish to
+overwrite your current VIM configurations, follow the guide on how to install
+Vundle
 [here](https://github.com/VundleVim/Vundle.vim)
 
 ![](img/02.gif)
 
 ## Step 3
 
-Save and close out of VIM. **Now install the plugins** by typing the following
-on the shell.
+**Install the plugins** by typing the following on the shell.
 
 ```
 vim +PluginInstall +qall
@@ -70,29 +70,15 @@ around 2 minutes long.
 
 ![](img/05.gif)
 
+
 ## Step 5
-
-Go back and edit your `~/.vimrc`.
-
-Either copy this file, or just add what you like. If you're not sure what
-something does, Google it (though I strongly recommend this configuration file).
-
-To copy, type
-```
-wget https://raw.githubusercontent.com/jimmoua/boole/master/.vimrc --output-document ~/.vimrc
-```
-
-Or copy and paste the below. (Probably better to `wget` since SSH clients are
-buggy when it comes to copy and paste).
-
-## Step 6
 
 Still inside your `YouCompleteMe` folder, delete the file `.ycm_extra_conf.py`.
 If you get prompted to confirm, just type yes.
 
 ![](img/06.gif)
 
-## Step 7
+## Step 6
 
 You'll want to down a file from my repository. This is just a template file I
 found online, and it's very useful for Valloric's plugin. Type the following
@@ -104,7 +90,7 @@ wget https://raw.githubusercontent.com/jimmoua/boole/master/.ycm_extra_conf.py
 
 ![](img/07.gif)
 
-## Step 8
+## Step 7
 
 In a window, type `gcc -xc++ -E -v -`. This will give you the include path for
 C++ libraries. Copy them or manually type them into the YCM config file in the
@@ -149,7 +135,7 @@ with C++**. Just add these to the top of `BASE_FLAGS`
 
 ![](img/09.gif)
 
-## Step 10
+## Step 8
 
 **I strongly recommend that you use the a different color scheme instead of the
 default colorscheme**. Some errors are red, and the default color scheme will
