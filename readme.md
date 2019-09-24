@@ -134,7 +134,7 @@ BASE_FLAGS = [
         ]
 ```
 
-**This also means everything the C++ standard commitee updates C++ language,
+**This also means every time the C++ standard commitee updates C++ language,
 and whoever is in charge of managing the Boole server also decides to do an
 upgrade, you'll have to change these paths for autocompletion to work**.
 
