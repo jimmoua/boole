@@ -17,64 +17,23 @@ command.
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-![](img/01.png)
+![](img/01.gif)
 
 ## Step 2
 
-**Or you can go to step 6 and copy-paste that .vimrc file, then skip to step
-4**.
-
-
-Edit your `.vimrc`. This is usually found in your home directory which is
-indicated by `~/`.
-
-Type in
-```
-vim ~/.vimrc
-```
-
-By default, it should be blank. If not, don't worry.
-
-Append the following lines to your `.vimrc`.
+Clone my provided basic vim config file from the following command
 
 ```
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-call vundle#end()
+wget raw.githubusercontent.com/jimmoua/boole/master/.vimrc --output-document ~/.vimrc
 ```
 
-The lines above are required as per the guide found [here](https://github.com/VundleVim/Vundle.vim)
+**THIS WILL OVERWRITE YOUR CURRENT VIM**. If you do not wish to overwrite you
+current VIM configurations, follow the guide on how to install Vundle
+[here](https://github.com/VundleVim/Vundle.vim)
 
-![](img/02.png)
+![](img/02.gif)
 
 ## Step 3
-
-Keep your `.vimrc` opened. As you may have guessed, the plugins that we will
-install go between the `call vundle#begin()` and `call vundle#end()`.
-
-Between these two, add the following lines
-
-```
-Plugin 'Vundlevim/Vundle.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
-```
-
-The config file should now look like:
-
-![](img/03.png)
-
-**Note that you do not have to indent. I just do it to make it look tidy**.
-
-`Vundlevim` is the required plugin. It is a required one in the VIM config
-file. `delimitmate` is another plugin that automatically adds a second bracket
-or parenthesis when you type an opening one. It is optional to have it, but I
-have included it just in case you want it. You can remove it if you want. The
-same goes with `vim-surround`.
-
-## Step 4
 
 Save and close out of VIM. **Now install the plugins** by typing the following
 on the shell.
@@ -84,9 +43,12 @@ vim +PluginInstall +qall
 ```
 
 **This will bring you inside a VIM window**. Just let it install and it will
-take you back to the shell once it is finished.
+take you back to the shell once it is finished. **YouCompleteMe** will take
+roughly 30 or so seconds to install, so wait for it.
 
-## Step 5
+![](img/03.gif)
+
+## Step 4
 
 Change directory to the plugin `YouCompleteMe`.
 
@@ -94,7 +56,7 @@ Change directory to the plugin `YouCompleteMe`.
 cd ~/.vim/bundle/YouCompleteMe/
 ```
 
-![](img/04.png)
+![](img/04.gif)
 
 In the `YouCompleteMe` directory, Install the python script by typing the below
 
@@ -103,13 +65,12 @@ In the `YouCompleteMe` directory, Install the python script by typing the below
 ```
 
 **Note that this may be a bit lengthy because completion system has to compile
-a bunch of stuff**. Wait for it to complete.
+a bunch of stuff**. Wait for it to complete. You can see the GIF below, it's
+around 2 minutes long.
 
-Once it has finished, your SSH client screen should look something like this:
+![](img/05.gif)
 
-![](img/05.png)
-
-## Step 6
+## Step 5
 
 Go back and edit your `~/.vimrc`.
 
@@ -124,51 +85,14 @@ wget https://raw.githubusercontent.com/jimmoua/boole/master/.vimrc --output-docu
 Or copy and paste the below. (Probably better to `wget` since SSH clients are
 buggy when it comes to copy and paste).
 
-```
-set expandtab
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set autoindent
-set breakindent
-set backspace=2
-set wildmenu
-set number
-syntax on
-set nocompatible
-filetype on
-filetype plugin indent on
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-  Plugin 'Vundlevim/Vundle.vim'
-  Plugin 'tpope/vim-surround'
-  Plugin 'raimondi/delimitmate'
-  Plugin 'Valloric/YouCompleteMe'
-call vundle#end()
-
-" This allows you to save using shift-s
-nmap <S-s> :wa<CR>
-
-let g:ycm_show_diagnostics_ui = 1
-let g:ycm_enable_diagnostic_highlighting = 1
-let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_always_populate_location_list = 1
-let g:ycm_error_symbol = '>>'
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
-let g:ycm_filetype_blacklist = {}
-```
-
-**I would just copy-paste the whole thing**. These are what I find very
-essential to using a customized VIM efficiently.
-
-## Step 7
+## Step 6
 
 Still inside your `YouCompleteMe` folder, delete the file `.ycm_extra_conf.py`.
 If you get prompted to confirm, just type yes.
 
-![](img/06.png)
+![](img/06.gif)
 
-## Step 8
+## Step 7
 
 You'll want to down a file from my repository. This is just a template file I
 found online, and it's very useful for Valloric's plugin. Type the following
@@ -178,25 +102,16 @@ command (make sure you're still in the `YouCompleteMe` directory).
 wget https://raw.githubusercontent.com/jimmoua/boole/master/.ycm_extra_conf.py
 ```
 
-![](img/07.png)
+![](img/07.gif)
 
-## Step 9
+## Step 8
 
-Open the `.ycm_extra_conf.py`. You'll want to have a screen multiplexer opened
-for this **or** another instance of your SSH client (PuTTY for example).
-Basically, you want two windows so you can refer to the other while typing in
-the path of the C++ libraries.
+In a window, type `gcc -xc++ -E -v -`. This will give you the include path for
+C++ libraries. Copy them or manually type them into the YCM config file in the
+`BASE_FLAGS` area like I did in the GIF. **Each directory must be the exact
+path, so no typos**.
 
-In a window, type `gcc -xc++ -E -v -` and on the other, have the YCM config
-file up.
-
-![](img/08.png)
-
-## Step 10
-
-This is perhaps the most important step? Once you've typed in the `gcc`
-command, it will show the library path for C++ on the Boole system. This begins
-where it says `#include <...> search starts here:`.
+![](img/08.gif)
 
 **Copy those paths and put them between the** `BASE_FLAGS` **in the**
 `.ycm_extra_conf.py` **like below**.
@@ -209,13 +124,13 @@ will take on the follow form:
 ```
 BASE_FLAGS = [
         '-isystem',
-        'include path',
+        'path',
         '-isystem',
-        'include path',
+        'path',
         '-isystem',
-        'include path',
+        'path',
         '-isystem',
-        'include path'
+        'path'
         ]
 ```
 
@@ -223,19 +138,80 @@ BASE_FLAGS = [
 and whoever is in charge of managing the Boole server also decides to do an
 upgrade, you'll have to change these paths for autocompletion to work**.
 
-## Step 11
 
-Close out of the YCM config file. You can close out of the `gcc` command window
-by pressing `CTRL-c`.
+**Do the following so you don't get errors in your header files when working
+with C++**. Just add these to the top of `BASE_FLAGS`
 
-## Step 12
+```
+'-std=c++11',
+'-xc++'
+```
 
-Enjoy.
+![](img/09.gif)
 
-**I strongly recommend that you use the industry color scheme instead of the
-normal colorscheme**. Some errors are red, and the default color scheme will
-make them unreadable.
+## Step 10
 
-Just add `colorscheme industry` to your `.vimrc` file.
+**I strongly recommend that you use the a different color scheme instead of the
+default colorscheme**. Some errors are red, and the default color scheme will
+make them hard to read.
+
+Just add `colorscheme {some color scheme}` to your `.vimrc` file. Examples
+below.
 
 ![](img/example.gif)
+
+## Getting more color schemes
+
+Before we get started with colors, PuTTY doesn't really do much colors. To do
+this, we need to make sure that our terminal environment is set up to support
+256 colors. Find this out by typing `echo $TERM`.
+
+![](img/11.gif)
+
+If it echos back just `xterm`, we have to set it to something that supports
+more colors: `xterm-256color`. Configure your BASH or whichever shell you're
+using to use the 256 color mode for xterm. (By default, all Boole users are set
+to use the BASH environment).
+
+**If your BASH configuration file is empty or doesn't exist, do not worry about
+it**. All you need to do is have a `.bashrc` and add the lines
+`export TERM=xterm-256color` to it.
+
+![](img/12.gif)
+
+Either restart your SSH client, or type into BASH or whatever shell you're
+using `export TERM=xterm-256color`.
+
+
+### Getting Color Schemes
+
+The default colors schemes that VIM provides aren't really much, so we can get
+more from a plugin.
+
+Add the following plugin to your VIM plugins:
+
+```
+Plugin 'rafi/awesome-vim-colorschemes'
+```
+![](img/10.gif)
+
+## Setting a colorscheme
+
+Browse through the colorschemes by playing on VIM first. This can be done from
+the command in VIM `:colorscheme `. Press tab to cycle through the color
+schemes, see which one you like, and set it to your VIM configuration file.
+
+![](img/13.gif)
+
+We can then change the color scheme setting in the VIM configuration file as
+done below:
+
+![](img/14.gif)
+
+## Final Product Showcase
+
+For this example, I went with molokai color scheme. There are tons of color
+schemes to choose from, so explore. **Important to know that some color schemes
+just will not display as good as others**.
+
+![](img/final.gif)
