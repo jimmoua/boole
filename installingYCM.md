@@ -148,9 +148,9 @@ below.
 
 ## Getting more color schemes
 
-Before we get started with colors, PuTTY doesn't really do much colors. To do
-this, we need to make sure that our terminal environment is set up to support
-256 colors. Find this out by typing `echo $TERM`.
+Before we get started with colors, We need to make sure our TERM environment
+variable is set to one that supports multiple colors.Find this out by typing
+`echo $TERM`.
 
 ![](img/11.gif)
 
