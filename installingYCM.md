@@ -80,7 +80,7 @@ If you get prompted to confirm, just type yes.
 
 ## Step 6
 
-You'll want to down a file from my repository. This is just a template file I
+You'll want to download a file from my repository. This is just a template file I
 found online, and it's very useful for Valloric's plugin. Type the following
 command (make sure you're still in the `YouCompleteMe` directory).
 
